@@ -30,9 +30,10 @@ const displayTodos = () => {
     else{
         displayFiltersStr += `
             <div class="counter">${countTodos()}</div>
-            <button onClick="showAll()" class="filter_all">All</button>
-            <button onClick="showActive()" class="filter_active">Active</button>
-            <button onClick="showCompleted()" class="filter_completed">Completed</button>
+            <button onClick="showAll()" class="filter__all">All</button>
+            <button onClick="showActive()" class="filter__active">Active</button>
+            <button onClick="showCompleted()" class="filter__completed">Completed</button>
+            <button onClick="deleteCompleted()" class="filter__delete_completed">Delete completed</button>
         `;
         filters.innerHTML = displayFiltersStr;
 
@@ -89,6 +90,16 @@ todoList.addEventListener('change', todoCompleteChanges);
 
 const deleteTodo = (id) => {
     todos.splice(id, 1);
+    updateLocal();
+    displayTodos();
+}
+
+const deleteCompleted = () =>{
+    todos.forEach((todo) => {
+        if (todo.complete){
+            deleteTodo(todo.id);
+        }
+    })
     updateLocal();
     displayTodos();
 }
