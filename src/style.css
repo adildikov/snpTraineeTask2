@@ -41,3 +41,8 @@ li {
 .filter {
     display: flex;
 }
+
+
+.hidden {
+    display: none;
+}

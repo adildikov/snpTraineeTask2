@@ -48,7 +48,6 @@ const displayTodos = () => {
             todoList.innerHTML = displayTodoStr;
         })
     }
-    
 }
 
 if(lclStrg){
@@ -129,3 +128,10 @@ const todoTextChange = (e) => {
 
 todoList.addEventListener('dblclick', todoTextChange);
 
+const showActive = () => {
+    todos.forEach((todo) => {
+        if (todo.complete){
+            console.log(document.getElementById(`todo_${todo.id}`).parentElement.className += 'hidden');
+        }
+    })
+}
