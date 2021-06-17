@@ -128,10 +128,29 @@ const todoTextChange = (e) => {
 
 todoList.addEventListener('dblclick', todoTextChange);
 
-const showActive = () => {
+const showAll = () => {
     todos.forEach((todo) => {
-        if (todo.complete){
-            console.log(document.getElementById(`todo_${todo.id}`).parentElement.className += 'hidden');
+        parent = document.getElementById(`todo_${todo.id}`).parentElement;
+        parent.className = '';
+    })
+}
+
+const showActive = () => {
+    showAll();
+    todos.forEach((todo) => {
+        parent = document.getElementById(`todo_${todo.id}`).parentElement;
+        if (todo.complete && !parent.classList.contains('hidden')){
+            parent.className += 'hidden';
+        }
+    })
+}
+
+const showCompleted = () => {
+    showAll();
+    todos.forEach((todo) => {
+        parent = document.getElementById(`todo_${todo.id}`).parentElement;
+        if (!todo.complete && !parent.classList.contains('hidden')){
+            parent.className += 'hidden';
         }
     })
 }
