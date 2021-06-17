@@ -11,13 +11,16 @@ const updateLocal = () => {
 
 const displayTodos = () => {
     let displayTodoStr = '';
+    if (todos.length === 0) {
+        todoList.innerHTML = '';
+    }
     todos.forEach((todo, i) => {
         todo.id = i;
         displayTodoStr += `
             <li>
                 <input type="checkbox" id="todo_${i}" ${todo.complete ? 'checked' : ''}>
                 <label for="todo_${i}">${todo.message}</label>
-                <button class="deleteBtn">X</button>
+                <button onClick="deleteTodo(${todo.id})" class="deleteBtn">X</button>
             </li>
         `;
         todoList.innerHTML = displayTodoStr;
@@ -37,8 +40,8 @@ const addNewTodo = () => {
         }
         todos.push(newTodo);
         newTodoMessage.value = '';
-        displayTodos();
         updateLocal();
+        displayTodos();
 }
 
 newTodoMessage.addEventListener('keypress', (e) => {
@@ -59,3 +62,9 @@ const ulChanges = (e) => {
 };
 
 todoList.addEventListener('change', ulChanges);
+
+const deleteTodo = (id) => {
+    todos.splice(id, 1);
+    updateLocal();
+    displayTodos();
+}
