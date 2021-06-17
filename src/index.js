@@ -63,9 +63,11 @@ const addNewTodo = () => {
             message: newTodoMessage.value,
             complete: false,
         }
-        todos.push(newTodo);
-        newTodoMessage.value = '';
-        updateLocal();
+        if (newTodoMessage.value){
+            todos.push(newTodo);
+            newTodoMessage.value = '';
+            updateLocal();
+        }
         displayTodos();
 }
 
@@ -90,7 +92,7 @@ const todoCompleteChanges = (e) => {
 todoList.addEventListener('change', todoCompleteChanges);
 
 const completeAll = () => {
-    if (todos.some((e) => !e.complete)){
+    if (todos.some((todo) => !todo.complete)){
         todos.forEach((todo) => {
             todo.complete = true;
             updateLocal();
@@ -106,7 +108,7 @@ const completeAll = () => {
 }
 
 const deleteTodo = (id) => {
-    todos.splice(id, 1);
+    todos = todos.filter((todo) => todo.id !== id);
     updateLocal();
     displayTodos();
 }
@@ -117,7 +119,6 @@ const deleteCompleted = () =>{
             deleteTodo(todo.id);
         }
     })
-    updateLocal();
     displayTodos();
 }
 
