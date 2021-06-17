@@ -20,6 +20,20 @@ body {
     color: #131313;
 }
 
-input:checked + label{
+input:checked + div{
     background-color: aquamarine;
+}
+
+li {
+    display: flex;
+}
+
+.todoText {
+    background-color: rgb(107, 107, 107);
+    width: 100px;
+    margin-left: 20px;
+}
+
+.deleteBtn {
+    margin-left: 20px;
 }

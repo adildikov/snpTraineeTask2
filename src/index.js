@@ -19,7 +19,7 @@ const displayTodos = () => {
         displayTodoStr += `
             <li>
                 <input type="checkbox" id="todo_${i}" ${todo.complete ? 'checked' : ''}>
-                <label for="todo_${i}">${todo.message}</label>
+                <div class="todoText" id="todotxt_${i}">${todo.message}</div>
                 <button onClick="deleteTodo(${todo.id})" class="deleteBtn">X</button>
             </li>
         `;
@@ -51,7 +51,7 @@ newTodoMessage.addEventListener('keypress', (e) => {
 });
 addBtn.addEventListener('click', addNewTodo);
 
-const ulChanges = (e) => {
+const todoCompleteChanges = (e) => {
     let id = e.target.getAttribute('id');
     todos.forEach((todo) => {
         if (`todo_${todo.id}` === id){
@@ -61,10 +61,35 @@ const ulChanges = (e) => {
     })
 };
 
-todoList.addEventListener('change', ulChanges);
+todoList.addEventListener('change', todoCompleteChanges);
 
 const deleteTodo = (id) => {
     todos.splice(id, 1);
     updateLocal();
     displayTodos();
 }
+
+const todoTextChange = (e) => {
+    let elem = e.target;
+    let id = elem.getAttribute('id');
+    todos.forEach((todo) => {
+        if (`todotxt_${todo.id}` === id){
+            elem.innerHTML = `<input type="text" class="todotxt_edit" value="${todo.message}" />`
+            document.querySelector(".todotxt_edit").focus();
+            elem.addEventListener("keypress", (e) => {
+                if (e.key === "Enter"){
+                    if (document.querySelector('.todotxt_edit').value){
+                        todo.message = elem.firstChild.value;
+                        updateLocal();
+                        displayTodos();
+                    }
+                    else{
+                        deleteTodo(todo.id);
+                    }
+                }
+            })
+        }
+    })
+}
+
+todoList.addEventListener('dblclick', todoTextChange);
