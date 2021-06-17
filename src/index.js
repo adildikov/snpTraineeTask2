@@ -88,8 +88,19 @@ const todoTextChange = (e) => {
                     }
                 }
             })
+            elem.addEventListener("focusout", (e) => {
+                if (document.querySelector('.todotxt_edit').value){
+                    todo.message = elem.firstChild.value;
+                    updateLocal();
+                    displayTodos();
+                }
+                else{
+                    deleteTodo(todo.id);
+                }
+            })
         }
     })
 }
 
 todoList.addEventListener('dblclick', todoTextChange);
+
