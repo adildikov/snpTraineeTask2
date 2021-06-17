@@ -37,3 +37,7 @@ li {
 .deleteBtn {
     margin-left: 20px;
 }
+
+.filter {
+    display: flex;
+}

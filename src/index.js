@@ -5,26 +5,50 @@ let todos = [];
 
 let lclStrg = localStorage.getItem('todos');
 
+let filters = document.querySelector('.filter');
+let counterHTML = document.querySelector('.counter');
+
 const updateLocal = () => {
     localStorage.setItem('todos', JSON.stringify(todos));
 }
 
+const countTodos = () => {
+    let cnt = 0;
+    todos.forEach((todo) => {
+        if (!todo.complete) cnt += 1;
+    })
+    return cnt;
+}
+
 const displayTodos = () => {
     let displayTodoStr = '';
+    let displayFiltersStr = '';
     if (todos.length === 0) {
         todoList.innerHTML = '';
+        filters.innerHTML = '';
     }
-    todos.forEach((todo, i) => {
-        todo.id = i;
-        displayTodoStr += `
-            <li>
-                <input type="checkbox" id="todo_${i}" ${todo.complete ? 'checked' : ''}>
-                <div class="todoText" id="todotxt_${i}">${todo.message}</div>
-                <button onClick="deleteTodo(${todo.id})" class="deleteBtn">X</button>
-            </li>
+    else{
+        displayFiltersStr += `
+            <div class="counter">${countTodos()}</div>
+            <button onClick="showAll()" class="filter_all">All</button>
+            <button onClick="showActive()" class="filter_active">Active</button>
+            <button onClick="showCompleted()" class="filter_completed">Completed</button>
         `;
-        todoList.innerHTML = displayTodoStr;
-    })
+        filters.innerHTML = displayFiltersStr;
+
+        todos.forEach((todo, i) => {
+            todo.id = i;
+            displayTodoStr += `
+                <li>
+                    <input type="checkbox" id="todo_${i}" ${todo.complete ? 'checked' : ''}>
+                    <div class="todoText" id="todotxt_${i}">${todo.message}</div>
+                    <button onClick="deleteTodo(${todo.id})" class="deleteBtn">X</button>
+                </li>
+            `;
+            todoList.innerHTML = displayTodoStr;
+        })
+    }
+    
 }
 
 if(lclStrg){
@@ -57,6 +81,7 @@ const todoCompleteChanges = (e) => {
         if (`todo_${todo.id}` === id){
             todo.complete = !todo.complete;
             updateLocal();
+            displayTodos();
         }
     })
 };
