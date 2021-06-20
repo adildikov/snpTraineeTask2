@@ -2,7 +2,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: #868686;
+    color: #F1DCC9;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 20px;
 }
 
 body {
@@ -16,7 +18,7 @@ body {
     position: relative;
 }
 
-.addTodo {
+.addTodoArea__addTodo {
     color: #131313;
 }
 
@@ -38,11 +40,69 @@ li {
     margin-left: 20px;
 }
 
-.filter {
+.main_filter {
     display: flex;
 }
 
 
 .hidden {
     display: none;
+}
+
+/*--------------------------*/
+
+header {
+    height: 80px;
+}
+
+.header__title {
+    font-size: 55px;
+    font-weight: bold;
+    color: #E7CAB7;
+    margin: 20px 0 0 0;
+    text-align: center;
+}
+
+main {
+    
+}
+
+.main_addTodoArea {
+    position: relative;
+    padding: 10px 10px 10px 2%;
+
+    background-color: #6C2D2C;
+
+    border: 1px solid rgb(92, 88, 88);
+    border-radius: 10px;
+}
+
+.addTodoArea__newTodo {
+    width: 80%;
+    height: 40px;
+
+    background: transparent;
+    border: none;
+}
+
+.addTodoArea__newTodo:focus {
+    outline: none;
+}
+
+.addTodoArea__addTodo {
+    width: 12%;
+    min-width: 70px;
+    height: 35px;
+
+    position: absolute;
+    top: 12px;
+    left: 85%;
+
+    font-weight: bold;
+    font-size: 25px;
+
+    color: #F1DCC9;
+    background-color: #42313A;
+    border: 2px solid rgb(34, 34, 34);
+    border-radius: 10px;
 }

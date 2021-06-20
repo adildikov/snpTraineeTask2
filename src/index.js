@@ -1,11 +1,11 @@
-let newTodoMessage = document.querySelector('.newTodo');
-let addBtn = document.querySelector('.addTodo');
-let todoList = document.querySelector('.todoList')
+let newTodoMessage = document.querySelector('.addTodoArea__newTodo');
+let addBtn = document.querySelector('.addTodoArea__addTodo');
+let todoList = document.querySelector('.main_todoList')
 let todos = [];
 
 let lclStrg = localStorage.getItem('todos');
 
-let filters = document.querySelector('.filter');
+let filters = document.querySelector('.main_filter');
 let counterHTML = document.querySelector('.counter');
 
 const updateLocal = () => {
