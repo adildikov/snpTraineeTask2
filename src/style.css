@@ -81,6 +81,8 @@ header {
 .main_filter {
     display: flex;
 
+    height: 58px;
+
     position: relative;
     margin-top: 20px;
     padding: 10px 10px 10px 10px;

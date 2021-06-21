@@ -1,0 +1,96 @@
+@media screen and (max-width: 800px) {
+    .main_filter {
+        height: 100px;
+    }
+
+    .filter__all {
+        position: absolute;
+        width: 120px;
+    }
+
+    .filter__active {
+        position: absolute;
+        width: 120px;
+        left: 50%;
+        margin-left: -60px;
+    }
+
+    .filter__completed {
+        position: absolute;
+        width: 120px;
+        right: 20px;
+    }
+
+    .filter__completeAll{
+        position: absolute;
+        width: 120px;
+        top: 55px;
+    }
+
+    .filter__deleteCompleted {
+        position: absolute;
+        width: 180px;
+        top: 55px;
+        left: 50%;
+        margin-left: -90px;
+    }
+
+    .counter {
+        position: absolute;
+        width: 120px;
+        top: 55px;
+        right: 20px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+
+    .addTodoArea__addTodo {
+        left: 80%;
+    }
+
+    .main_filter {
+        height: 145px;
+    }
+
+    .filter__all {
+        position: absolute;
+        width: 120px;
+        top: 55px;
+    }
+
+    .filter__active {
+        position: absolute;
+        width: 120px;
+        left: 0;
+        margin-left: 10px;
+    }
+
+    .filter__completed {
+        position: absolute;
+        width: 120px;
+        right: 20px;
+    }
+
+    .filter__completeAll{
+        position: absolute;
+        width: 120px;
+        top: 55px;
+        right: 20px;
+    }
+
+    .filter__deleteCompleted {
+        position: absolute;
+        width: 180px;
+        top: 100px;
+        left: 0;
+        margin-left: 10px;
+    }
+
+    .counter {
+        position: absolute;
+        width: 120px;
+        top: 100px;
+        right: 20px;
+    }
+}
