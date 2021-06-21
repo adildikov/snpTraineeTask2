@@ -29,12 +29,12 @@ const displayTodos = () => {
     }
     else{
         displayFiltersStr += `
-            <button onClick="completeAll()" class="filter__completeAll">✓</button>
-            <div class="counter">${countTodos()}</div>
-            <button onClick="showAll()" class="filter__all">All</button>
-            <button onClick="showActive()" class="filter__active">Active</button>
-            <button onClick="showCompleted()" class="filter__completed">Completed</button>
-            <button onClick="deleteCompleted()" class="filter__deleteCompleted">Delete completed</button>
+            <button onClick="completeAll()" class="filter__completeAll button">Check all ✓</button>
+            <button onClick="showAll()" class="filter__all button">All</button>
+            <button onClick="showActive()" class="filter__active button">Active</button>
+            <button onClick="showCompleted()" class="filter__completed button">Completed</button>
+            <button onClick="deleteCompleted()" class="filter__deleteCompleted button">Delete completed</button>
+            <div class="counter">Todos left: ${countTodos()}</div>
         `;
         filters.innerHTML = displayFiltersStr;
 
@@ -42,9 +42,9 @@ const displayTodos = () => {
             todo.id = i;
             displayTodoStr += `
                 <li>
-                    <input type="checkbox" id="todo_${i}" ${todo.complete ? 'checked' : ''}>
-                    <div class="todoText" id="todotxt_${i}">${todo.message}</div>
-                    <button onClick="deleteTodo(${todo.id})" class="deleteBtn">X</button>
+                    <input type="checkbox" class="todoList__checkbox" id="todo_${i}" ${todo.complete ? 'checked' : ''}>
+                    <div class="todoList__todoText" id="todotxt_${i}">${todo.message}</div>
+                    <button onClick="deleteTodo(${todo.id})" class="todoList__deleteBtn button">X</button>
                 </li>
             `;
             todoList.innerHTML = displayTodoStr;
