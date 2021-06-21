@@ -1,3 +1,24 @@
+
+input:checked + div{
+    background-color: aquamarine;
+}
+
+li {
+    display: flex;
+}
+
+.todoList__todoText {
+    background-color: rgb(107, 107, 107);
+    width: 100px;
+    margin-left: 20px;
+}
+
+.todoList__deleteBtn {
+    margin-left: 20px;
+}
+
+/*--------------------------*/
+
 * {
     margin: 0;
     padding: 0;
@@ -5,6 +26,10 @@
     color: #F1DCC9;
     font-family: 'Quicksand', sans-serif;
     font-size: 20px;
+}
+
+.hidden {
+    display: none;
 }
 
 body {
@@ -18,39 +43,6 @@ body {
     position: relative;
 }
 
-.addTodoArea__addTodo {
-    color: #131313;
-}
-
-input:checked + div{
-    background-color: aquamarine;
-}
-
-li {
-    display: flex;
-}
-
-.todoText {
-    background-color: rgb(107, 107, 107);
-    width: 100px;
-    margin-left: 20px;
-}
-
-.deleteBtn {
-    margin-left: 20px;
-}
-
-.main_filter {
-    display: flex;
-}
-
-
-.hidden {
-    display: none;
-}
-
-/*--------------------------*/
-
 header {
     height: 80px;
 }
@@ -63,15 +55,11 @@ header {
     text-align: center;
 }
 
-main {
-    
-}
-
 .main_addTodoArea {
     position: relative;
     padding: 10px 10px 10px 2%;
 
-    background-color: #6C2D2C;
+    background-color: #9F4636;
 
     border: 1px solid rgb(92, 88, 88);
     border-radius: 10px;
@@ -92,17 +80,49 @@ main {
 .addTodoArea__addTodo {
     width: 12%;
     min-width: 70px;
-    height: 35px;
 
     position: absolute;
-    top: 12px;
+    top: 11px;
     left: 85%;
 
     font-weight: bold;
     font-size: 25px;
+}
+
+.button {
+    padding: 2px 5px;
 
     color: #F1DCC9;
     background-color: #42313A;
     border: 2px solid rgb(34, 34, 34);
     border-radius: 10px;
+}
+
+.main_filter {
+    display: flex;
+
+    position: relative;
+    margin-top: 20px;
+    padding: 10px 10px 10px 10px;
+    justify-content: space-between;
+
+    background-color: #6C2D2C;
+
+    border: 1px solid rgb(92, 88, 88);
+    border-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.main_filter .counter {
+    padding-top: 5px;
+    margin-left: -20px;
+}
+
+.main_todoList {
+    
+}
+
+input[type="checkbox"] {
+
 }
