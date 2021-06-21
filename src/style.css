@@ -156,3 +156,17 @@ li:last-child {
 
     margin-top: 2px;
 }
+
+@media screen and (max-width: 1150px) {
+    .wrapper {
+        width: 85%;
+        margin-left: 7.5%;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .wrapper {
+        width: 95%;
+        margin-left: 2.5%;
+    }
+}
