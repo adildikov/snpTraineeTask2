@@ -26,8 +26,12 @@ const displayTodos = () => {
     if (todos.length === 0) {
         todoList.innerHTML = '';
         filters.innerHTML = '';
+        filters.className += ' hidden';
+        todoList.className += ' hidden';
     }
     else{
+        filters.className = 'main_filter';
+        todoList.className = 'main_todoList';
         displayFiltersStr += `
             <button onClick="completeAll()" class="filter__completeAll button">Check all ✓</button>
             <button onClick="showAll()" class="filter__all button">All</button>

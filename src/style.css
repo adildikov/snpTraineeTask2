@@ -9,7 +9,7 @@
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 body {
@@ -150,6 +150,9 @@ li:last-child {
     border-bottom-right-radius: 10px;
 }
 
-input[type="checkbox"] {
+.todoList__checkbox {
+    width: 20px;
+    height: 20px;
 
+    margin-top: 2px;
 }
