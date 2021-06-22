@@ -6,7 +6,15 @@ let todos = [];
 let lclStrg = localStorage.getItem('todos');
 
 let filters = document.querySelector('.main_filter');
+
+let showAllBtn = document.querySelector('.filter__all');
+let showActiveBtn = document.querySelector('.filter__active');
+let showCompletedBtn = document.querySelector('.filter__completed');
+let completeAllBtn = document.querySelector('.filter__completeAll');
+let deleteCompletedBtn = document.querySelector('.filter__deleteCompleted');
 let counterHTML = document.querySelector('.counter');
+
+let crnFilter = '';
 
 const updateLocal = () => {
     localStorage.setItem('todos', JSON.stringify(todos));
@@ -24,23 +32,13 @@ const displayTodos = () => {
     let displayTodoStr = '';
     let displayFiltersStr = '';
     if (todos.length === 0) {
-        todoList.innerHTML = '';
-        filters.innerHTML = '';
         filters.className += ' hidden';
         todoList.className += ' hidden';
     }
     else{
         filters.className = 'main_filter';
         todoList.className = 'main_todoList';
-        displayFiltersStr += `
-            <button onClick="completeAll()" class="filter__completeAll button">Check all ✓</button>
-            <button onClick="showAll()" class="filter__all button">All</button>
-            <button onClick="showActive()" class="filter__active button">Active</button>
-            <button onClick="showCompleted()" class="filter__completed button">Completed</button>
-            <button onClick="deleteCompleted()" class="filter__deleteCompleted button">Delete completed</button>
-            <div class="counter">Todos left: ${countTodos()}</div>
-        `;
-        filters.innerHTML = displayFiltersStr;
+        counterHTML.innerHTML = "Todos left: " + countTodos();
 
         todos.forEach((todo, i) => {
             todo.id = i;
@@ -116,6 +114,9 @@ const deleteTodo = (id) => {
     todos = todos.filter((todo) => todo.id !== id);
     updateLocal();
     displayTodos();
+    if (crnFilter === 'all') showAll();
+    if (crnFilter === 'active') showActive();
+    if (crnFilter === 'complete') showCompleted();
 }
 
 const deleteCompleted = () =>{
@@ -165,6 +166,10 @@ const todoTextChange = (e) => {
 todoList.addEventListener('dblclick', todoTextChange);
 
 const showAll = () => {
+    crnFilter = "all";
+    showAllBtn.className = 'filter__all button current_filter';
+    showActiveBtn.className = 'filter__active button';
+    showCompletedBtn.className = 'filter__completed button';
     todos.forEach((todo) => {
         parent = document.getElementById(`todo_${todo.id}`).parentElement;
         parent.className = '';
@@ -173,6 +178,10 @@ const showAll = () => {
 
 const showActive = () => {
     showAll();
+    crnFilter = "active";
+    showAllBtn.className = 'filter__all button';
+    showActiveBtn.className = 'filter__active button current_filter';
+    showCompletedBtn.className = 'filter__completed button';
     todos.forEach((todo) => {
         parent = document.getElementById(`todo_${todo.id}`).parentElement;
         if (todo.complete && !parent.classList.contains('hidden')){
@@ -183,6 +192,10 @@ const showActive = () => {
 
 const showCompleted = () => {
     showAll();
+    crnFilter = "complete";
+    showAllBtn.className = 'filter__all button';
+    showActiveBtn.className = 'filter__active button';
+    showCompletedBtn.className = 'filter__completed button current_filter';
     todos.forEach((todo) => {
         parent = document.getElementById(`todo_${todo.id}`).parentElement;
         if (!todo.complete && !parent.classList.contains('hidden')){

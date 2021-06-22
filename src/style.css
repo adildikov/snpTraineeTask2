@@ -101,6 +101,11 @@ header {
     border-bottom-right-radius: 0;
 }
 
+.current_filter {
+    background-color: #77596a;
+    border: 4px solid rgb(34, 34, 34);
+}
+
 .main_filter .counter {
     padding-top: 5px;
     margin-left: -20px;
