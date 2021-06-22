@@ -138,7 +138,7 @@ input:checked + div{
 .todoList__todoText {
     background-color: transparent;
     width: 80%;
-    margin-left: 20px;
+    margin-left: 40px;
     word-wrap:break-word;
 }
 
@@ -153,9 +153,16 @@ input:checked + div{
 }
 
 .todoList__deleteBtn {
+    height: 32px;
+    width: 32px;
+
     position: absolute;
-    top: 6px;
+    top: 50%;
+    margin-top: -16px;
     right: 20px;
+
+    justify-content: center;
+    text-align: center;
 }
 
 li:last-child {
@@ -167,7 +174,11 @@ li:last-child {
     width: 20px;
     height: 20px;
 
-    margin-top: 2px;
+    position: absolute;
+    top: 50%;
+    margin-top: -10px;
+
+    cursor: pointer;
 }
 
 @media screen and (max-width: 1150px) {

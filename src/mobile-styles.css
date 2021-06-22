@@ -5,6 +5,10 @@
         border: 2px solid rgb(34, 34, 34);
     }
 
+    .todoList__checkbox {
+        cursor: default;
+    }
+
     .main_filter {
         height: 100px;
     }

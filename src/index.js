@@ -30,7 +30,6 @@ const countTodos = () => {
 
 const displayTodos = () => {
     let displayTodoStr = '';
-    let displayFiltersStr = '';
     if (todos.length === 0) {
         filters.className += ' hidden';
         todoList.className += ' hidden';
