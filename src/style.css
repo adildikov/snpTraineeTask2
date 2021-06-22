@@ -77,6 +77,12 @@ header {
     border-radius: 10px;
 }
 
+.button:hover {
+    cursor: pointer;
+
+    border: 2px solid rgb(228, 228, 228);
+}
+
 .main_filter {
     display: flex;
 
@@ -128,10 +134,11 @@ input:checked + div{
     background-color: transparent;
     width: 80%;
     margin-left: 20px;
+    word-wrap:break-word;
 }
 
 .todotxt_edit {
-    width: 80%;
+    width: 100%;
     background: transparent;
     border: none;
 }

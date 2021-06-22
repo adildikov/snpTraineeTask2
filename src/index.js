@@ -65,13 +65,15 @@ const addNewTodo = () => {
         let newTodo = {
             id: -1,
             message: newTodoMessage.value,
+            messageLength: newTodoMessage.value.length,
             complete: false,
         }
-        if (newTodoMessage.value){
+        if (newTodoMessage.value.trim()){
             todos.push(newTodo);
             newTodoMessage.value = '';
             updateLocal();
         }
+        else newTodoMessage.value = '';
         displayTodos();
 }
 

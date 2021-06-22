@@ -1,4 +1,10 @@
 @media screen and (max-width: 800px) {
+    .button:hover {
+        cursor: default;
+    
+        border: 2px solid rgb(34, 34, 34);
+    }
+
     .main_filter {
         height: 100px;
     }
