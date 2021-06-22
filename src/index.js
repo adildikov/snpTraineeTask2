@@ -65,7 +65,6 @@ const addNewTodo = () => {
         let newTodo = {
             id: -1,
             message: newTodoMessage.value,
-            messageLength: newTodoMessage.value.length,
             complete: false,
         }
         if (newTodoMessage.value.trim()){
@@ -134,7 +133,9 @@ const todoTextChange = (e) => {
     todos.forEach((todo) => {
         if (`todotxt_${todo.id}` === id){
             elem.innerHTML = `<input type="text" class="todotxt_edit" value="${todo.message}" />`
-            document.querySelector(".todotxt_edit").focus();
+            let input = document.querySelector(".todotxt_edit")
+            input.focus();
+            input.selectionStart = input.value.length;
             elem.addEventListener("keypress", (e) => {
                 if (e.key === "Enter"){
                     if (document.querySelector('.todotxt_edit').value){
