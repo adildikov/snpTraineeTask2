@@ -132,8 +132,8 @@ const deleteCompleted = () =>{
             deleteTodo(todo.id);
         }
     })
-    displayTodos();
     whatFilter();
+    displayTodos();
 }
 
 const todoTextChange = (e) => {
