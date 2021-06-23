@@ -126,14 +126,14 @@ const deleteTodo = (id) => {
     whatFilter();
 }
 
-const deleteCompleted = () =>{
+const deleteCompleted = () => {
     todos.forEach((todo) => {
         if (todo.complete){
             deleteTodo(todo.id);
         }
     })
-    whatFilter();
     displayTodos();
+    whatFilter();
 }
 
 const todoTextChange = (e) => {
