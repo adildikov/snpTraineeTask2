@@ -67,6 +67,9 @@ const addNewTodo = () => {
         if (newTodoMessage.value.trim()){
             todos.push(newTodo);
             newTodoMessage.value = '';
+            showAllBtn.className = 'filter__all button current_filter';
+            showActiveBtn.className = 'filter__active button';
+            showCompletedBtn.className = 'filter__completed button';
             updateLocal();
         }
         else newTodoMessage.value = '';
