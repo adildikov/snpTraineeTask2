@@ -16,6 +16,12 @@ let counterHTML = document.querySelector('.counter');
 
 let crnFilter = '';
 
+let whatFilter = () => {
+    if (crnFilter === 'all') showAll();
+    if (crnFilter === 'active') showActive();
+    if (crnFilter === 'complete') showCompleted();
+}
+
 const updateLocal = () => {
     localStorage.setItem('todos', JSON.stringify(todos));
 }
@@ -74,6 +80,7 @@ const addNewTodo = () => {
         }
         else newTodoMessage.value = '';
         displayTodos();
+        whatFilter();
 }
 
 newTodoMessage.addEventListener('keypress', (e) => {
@@ -116,9 +123,7 @@ const deleteTodo = (id) => {
     todos = todos.filter((todo) => todo.id !== id);
     updateLocal();
     displayTodos();
-    if (crnFilter === 'all') showAll();
-    if (crnFilter === 'active') showActive();
-    if (crnFilter === 'complete') showCompleted();
+    whatFilter();
 }
 
 const deleteCompleted = () =>{
