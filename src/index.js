@@ -133,6 +133,7 @@ const deleteCompleted = () =>{
         }
     })
     displayTodos();
+    whatFilter();
 }
 
 const todoTextChange = (e) => {
