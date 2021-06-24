@@ -89,7 +89,7 @@ header {
     height: 58px;
 
     position: relative;
-    margin-top: 20px;
+    margin: 20px 0 5px 0;
     padding: 10px 10px 10px 10px;
     justify-content: space-between;
 
@@ -97,8 +97,6 @@ header {
 
     border: 1px solid rgb(92, 88, 88);
     border-radius: 10px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
 }
 
 .current_filter {
@@ -116,8 +114,7 @@ header {
 
     border: 1px solid rgb(92, 88, 88);
     border-top: none;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-radius: 10px;
 }
 
 li {
@@ -125,6 +122,8 @@ li {
     position: relative;
 
     padding: 10px 10px 10px 10px;
+
+    border-bottom: 1px solid black;
 }
 
 li:nth-child(odd) {
@@ -169,6 +168,11 @@ input:checked + div{
 li:last-child {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    border-bottom: 0px solid black;
+}
+li:first-child {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .todoList__checkbox {
