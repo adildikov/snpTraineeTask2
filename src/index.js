@@ -56,6 +56,7 @@ const displayTodos = () => {
             `;
             todoList.innerHTML = displayTodoStr;
         })
+        whatFilter();
     }
 }
 
@@ -80,7 +81,6 @@ const addNewTodo = () => {
         }
         else newTodoMessage.value = '';
         displayTodos();
-        whatFilter();
 }
 
 newTodoMessage.addEventListener('keypress', (e) => {
@@ -123,7 +123,6 @@ const deleteTodo = (id) => {
     todos = todos.filter((todo) => todo.id !== id);
     updateLocal();
     displayTodos();
-    whatFilter();
 }
 
 const deleteCompleted = () => {
@@ -133,7 +132,6 @@ const deleteCompleted = () => {
         }
     })
     displayTodos();
-    whatFilter();
 }
 
 const todoTextChange = (e) => {
