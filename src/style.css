@@ -114,7 +114,6 @@ header {
 
     border: 1px solid rgb(92, 88, 88);
     border-top: none;
-    border-radius: 10px;
 }
 
 li {
@@ -166,13 +165,7 @@ input:checked + div{
 }
 
 li:last-child {
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
     border-bottom: 0px solid black;
-}
-li:first-child {
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
 }
 
 .todoList__checkbox {

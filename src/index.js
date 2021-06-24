@@ -180,6 +180,7 @@ const showAll = () => {
         parent = document.getElementById(`todo_${todo.id}`).parentElement;
         parent.className = '';
     })
+    todoList.classList.remove('hidden');
 }
 
 const showActive = () => {
@@ -194,6 +195,7 @@ const showActive = () => {
             parent.className += 'hidden';
         }
     })
+    allTodosCompleted();
 }
 
 const showCompleted = () => {
@@ -208,4 +210,27 @@ const showCompleted = () => {
             parent.className += 'hidden';
         }
     })
+    allTodosActive();
+}
+
+const allTodosActive = () => {
+    let allActive = true;
+    todos.forEach((todo) => {
+        if (todo.complete){
+            allActive = false;
+            return;
+        }
+    })
+    if (allActive) todoList.classList.add('hidden');
+}
+
+const allTodosCompleted = () => {
+    let allCompl = true;
+    todos.forEach((todo) => {
+        if (!todo.complete){
+            allCompl = false;
+            return;
+        }
+    })
+    if (allCompl) todoList.classList.add('hidden');
 }
