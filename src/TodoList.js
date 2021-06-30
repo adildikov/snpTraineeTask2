@@ -5,10 +5,11 @@ export default class TodoList {
     constructor(lclStrg) {
         this.todos = [];
         this.lclStrg = lclStrg;
-        this.filters = new Filters(this.todos);
         if (this.lclStrg) {
             this.todos = JSON.parse(this.lclStrg);
         }
+        this.filters = new Filters(this.todos);
+        this.displayTodos();
     }
 
     updateLocal() {

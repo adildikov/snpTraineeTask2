@@ -10,11 +10,26 @@ Consts.newTodoMessage.addEventListener('keypress', (e) => {
     }
 });
 
-Consts.showAllBtn.addEventListener('click', toDoList.filters.showAll());
-Consts.showActiveBtn.addEventListener('click', toDoList.filters.showActive());
-Consts.showCompletedBtn.addEventListener('click', toDoList.filters.showCompleted());
-Consts.completeAllBtn.addEventListener('click', toDoList.completeAll());
-Consts.deleteCompletedBtn.addEventListener('click', toDoList.deleteCompleted());
+Consts.showAllBtn.addEventListener('click', () => { 
+    toDoList.filters.showAll();
+    toDoList.displayTodos();
+});
+Consts.showActiveBtn.addEventListener('click', () => { 
+    toDoList.filters.showActive();
+    toDoList.displayTodos();
+});
+Consts.showCompletedBtn.addEventListener('click', () => { 
+    toDoList.filters.showCompleted();
+    toDoList.displayTodos();
+});
+Consts.completeAllBtn.addEventListener('click', () => { 
+    toDoList.completeAll();
+    toDoList.displayTodos();
+});
+Consts.deleteCompletedBtn.addEventListener('click', () => { 
+    toDoList.deleteCompleted();
+    toDoList.displayTodos();
+});
 
 Consts.addBtn.addEventListener('click', () => toDoList.addNewTodo());
 
