@@ -8,7 +8,7 @@ export default class TodoList {
         if (this.lclStrg) {
             this.todos = JSON.parse(this.lclStrg);
         }
-        this.filters = new Filters(this.todos);
+        this.filters = new Filters();
         this.displayTodos();
     }
 
@@ -41,12 +41,12 @@ export default class TodoList {
                     <li>
                         <input type="checkbox" class="todoList__checkbox" id="todo_${i}" ${todo.complete ? 'checked' : ''}>
                         <div class="todoList__todoText" id="todotxt_${i}">${todo.message}</div>
-                        <button onClick="deleteTodo(${todo.id})" class="todoList__deleteBtn button">X</button>
+                        <button class="todoList__deleteBtn button" id="tododelete_${i}">X</button>
                     </li>
                 `;
                 Consts.todoList.innerHTML = displayTodoStr;
             })
-            this.filters.whatFilter();
+            this.filters.whatFilter(this.todos);
         }
     }
 
@@ -94,8 +94,23 @@ export default class TodoList {
         }
         this.displayTodos();
     }
+
+    deleteTodo(e) {
+        let id = e.target.getAttribute('id');
+        let newTodos = [];
+        if (id != null && id.slice(0,10) === "tododelete"){
+            this.todos.forEach((todo) => {
+                if (`tododelete_${todo.id}` !== id){
+                    newTodos.push(todo);
+                }
+            })
+            this.todos = newTodos;
+            this.updateLocal();
+            this.displayTodos();
+        }
+    }
     
-    deleteTodo(id) {
+    deleteTodoById(id) {
         this.todos = this.todos.filter((todo) => todo.id !== id);
         this.updateLocal();
         this.displayTodos();
@@ -104,7 +119,7 @@ export default class TodoList {
     deleteCompleted() {
         this.todos.forEach((todo) => {
             if (todo.complete){
-                this.deleteTodo(todo.id);
+                this.deleteTodoById(todo.id);
             }
         })
         this.displayTodos();
@@ -127,7 +142,7 @@ export default class TodoList {
                             this.displayTodos();
                         }
                         else{
-                            this.deleteTodo(todo.id);
+                            this.deleteTodoById(todo.id);
                         }
                     }
                 })
@@ -138,7 +153,7 @@ export default class TodoList {
                         this.displayTodos();
                     }
                     else{
-                        this.deleteTodo(todo.id);
+                        this.deleteTodoById(todo.id);
                     }
                 })
             }

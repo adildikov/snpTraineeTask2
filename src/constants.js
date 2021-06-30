@@ -10,3 +10,5 @@ export const showCompletedBtn = document.querySelector('.filter__completed');
 export const completeAllBtn = document.querySelector('.filter__completeAll');
 export const deleteCompletedBtn = document.querySelector('.filter__deleteCompleted');
 export const counterHTML = document.querySelector('.counter');
+
+export const deleteBtns = document.querySelectorAll('.todoList__deleteBtn');
