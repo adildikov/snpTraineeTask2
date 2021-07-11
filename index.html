@@ -25,7 +25,7 @@
                 <button class="addTodoArea__addTodo button">Add</button>
             </div>
 
-            <div class="main_filter hidden">
+            <div class="main_filter">
                 <button class="filter__completeAll button">Check all ✓</button>
                 <button class="filter__all button">All</button>
                 <button class="filter__active button">Active</button>
@@ -34,7 +34,7 @@
                 <div class="counter">Todos left: 0</div>
             </div>
 
-            <ul class="main_todoList hidden">
+            <ul class="main_todoList">
 
             </ul>
         </main>
@@ -42,6 +42,15 @@
             
         </footer>
     </div>
+    <template class="task__template">
+        <li class="task">
+            <input type="checkbox" class="todoList__checkbox" checked=false>
+            <div class="todoList__todoText"></div>
+            <input type="text" class="todotxt_edit hidden" />
+            <button class="todoList__deleteBtn button">X</button>
+        </li>
+        
+    </template>
 </body>
 <script src="./src/index.js" type="module"></script>
 </html>

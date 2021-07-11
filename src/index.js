@@ -1,40 +1,58 @@
 import TodoList from "./TodoList.js";
+import Task from "./task.js";
+import Input from "./Input.js";
 import * as Consts from "./constants.js"
+import Todo from "./Todo.js"
 
-let lclStrg = localStorage.getItem('todos');
-const toDoList = new TodoList(lclStrg);
+//const toDoList = new TodoList(lclStrg);
 
-Consts.newTodoMessage.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter'){
-        toDoList.addNewTodo();
-    }
-});
+// let message = "abc";
+// let taskTemplateClass = '.task__template';
+// let array = [];
+// const deleteFromTDL = () => {
+//     array.pop();
+// }
 
-Consts.showAllBtn.addEventListener('click', () => { 
-    toDoList.filters.showAll(toDoList.todos);
-    toDoList.displayTodos();
-});
-Consts.showActiveBtn.addEventListener('click', () => { 
-    toDoList.filters.showActive(toDoList.todos);
-    toDoList.displayTodos();
-});
-Consts.showCompletedBtn.addEventListener('click', () => { 
-    toDoList.filters.showCompleted(toDoList.todos);
-    toDoList.displayTodos();
-});
-Consts.completeAllBtn.addEventListener('click', () => { 
-    toDoList.completeAll();
-    toDoList.displayTodos();
-});
-Consts.deleteCompletedBtn.addEventListener('click', () => { 
-    toDoList.deleteCompleted();
-    toDoList.displayTodos();
-});
+// const todoList = new TodoList().getTodoList();
+// const input = new Input((msg) => todoList.addNewTask(msg)).getInput();
+// todoList.addNewTask(message);
 
-Consts.addBtn.addEventListener('click', () => toDoList.addNewTodo());
+let lclStrg = localStorage.getItem('todos') ? localStorage.getItem('todos') : [];
 
-Consts.todoList.addEventListener('change', (e) => toDoList.todoCompleteChanges(e));
+const todo = new Todo(lclStrg).getTodo();
 
-Consts.todoList.addEventListener('click', (e) => toDoList.deleteTodo(e));
 
-Consts.todoList.addEventListener('dblclick',(e) => toDoList.todoTextChange(e));
+// Consts.newTodoMessage.addEventListener('keypress', (e) => {
+//     if (e.key === 'Enter'){
+//         toDoList.addNewTodo();
+//     }
+// });
+
+// Consts.showAllBtn.addEventListener('click', () => { 
+//     toDoList.filters.showAll(toDoList.todos);
+//     toDoList.displayTodos();
+// });
+// Consts.showActiveBtn.addEventListener('click', () => { 
+//     toDoList.filters.showActive(toDoList.todos);
+//     toDoList.displayTodos();
+// });
+// Consts.showCompletedBtn.addEventListener('click', () => { 
+//     toDoList.filters.showCompleted(toDoList.todos);
+//     toDoList.displayTodos();
+// });
+// Consts.completeAllBtn.addEventListener('click', () => { 
+//     toDoList.completeAll();
+//     toDoList.displayTodos();
+// });
+// Consts.deleteCompletedBtn.addEventListener('click', () => { 
+//     toDoList.deleteCompleted();
+//     toDoList.displayTodos();
+// });
+
+// Consts.addBtn.addEventListener('click', () => toDoList.addNewTodo());
+
+// Consts.todoList.addEventListener('change', (e) => toDoList.todoCompleteChanges(e));
+
+// Consts.todoList.addEventListener('click', (e) => toDoList.deleteTodo(e));
+
+// Consts.todoList.addEventListener('dblclick',(e) => toDoList.todoTextChange(e));

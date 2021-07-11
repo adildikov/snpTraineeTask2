@@ -1,79 +1,44 @@
-import * as Consts from "./constants.js";
-import TodoList from "./TodoList.js";
+
 
 export default class Filters {
-    constructor() {
-        this._filters = Consts.filters;
-        this.crnFilter = "all";
+    constructor(showAll, showActive, showCompleted){
+        this.showAll = showAll;
+        this.showActive = showActive;
+        this.showCompleted = showCompleted;
+        this.showAllBtn = document.querySelector('.filter__all');
+        this.showActiveBtn = document.querySelector('.filter__active');
+        this.showCompletedBtn = document.querySelector('.filter__completed');
     }
 
-    whatFilter(todos) {
-        if (this.crnFilter === 'all') this.showAll(todos);
-        if (this.crnFilter === 'active') this.showActive(todos);
-        if (this.crnFilter === 'complete') this.showCompleted(todos);
+    whatFilter() {
+        if (this.crnFilter === 'all') this._showAll();
+        if (this.crnFilter === 'active') this._showActive();
+        if (this.crnFilter === 'complete') this._showCompleted();
     }
 
-    showAll(todos) {
+    _showAll() {
+        this.showAll();
         this.crnFilter = "all";
-        Consts.showAllBtn.className = 'filter__all button current_filter';
-        Consts.showActiveBtn.className = 'filter__active button';
-        Consts.showCompletedBtn.className = 'filter__completed button';
-        todos.forEach((todo) => {
-            parent = document.getElementById(`todo_${todo.id}`).parentElement;
-            parent.className = '';
-        })
-        Consts.todoList.classList.remove('hidden');
+        this.showAllBtn.className = 'filter__all button current_filter';
+        this.showActiveBtn.className = 'filter__active button';
+        this.showCompletedBtn.className = 'filter__completed button';
     }
-    
-    showActive(todos) {
-        this.showAll(todos);
+
+    _showActive() {
+        this._showAll();
+        this.showActive();
         this.crnFilter = "active";
-        Consts.showAllBtn.className = 'filter__all button';
-        Consts.showActiveBtn.className = 'filter__active button current_filter';
-        Consts.showCompletedBtn.className = 'filter__completed button';
-        todos.forEach((todo) => {
-            parent = document.getElementById(`todo_${todo.id}`).parentElement;
-            if (todo.complete && !parent.classList.contains('hidden')){
-                parent.className += 'hidden';
-            }
-        })
-        this.allTodosCompleted(todos);
+        this.showAllBtn.className = 'filter__all button';
+        this.showActiveBtn.className = 'filter__active button current_filter';
+        this.showCompletedBtn.className = 'filter__completed button';
     }
     
-    showCompleted(todos) {
-        this.showAll(todos);
+    _showCompleted() {
+        this._showAll();
+        this.showCompleted();
         this.crnFilter = "complete";
-        Consts.showAllBtn.className = 'filter__all button';
-        Consts.showActiveBtn.className = 'filter__active button';
-        Consts.showCompletedBtn.className = 'filter__completed button current_filter';
-        todos.forEach((todo) => {
-            parent = document.getElementById(`todo_${todo.id}`).parentElement;
-            if (!todo.complete && !parent.classList.contains('hidden')){
-                parent.className += 'hidden';
-            }
-        })
-        this.allTodosActive(todos);
-    }
-    
-    allTodosActive(todos) {
-        let allActive = true;
-        todos.forEach((todo) => {
-            if (todo.complete){
-                allActive = false;
-                return;
-            }
-        })
-        if (allActive) Consts.todoList.classList.add('hidden');
-    }
-    
-    allTodosCompleted(todos) {
-        let allCompl = true;
-        todos.forEach((todo) => {
-            if (!todo.complete){
-                allCompl = false;
-                return;
-            }
-        })
-        if (allCompl) Consts.todoList.classList.add('hidden');
+        this.showAllBtn.className = 'filter__all button';
+        this.showActiveBtn.className = 'filter__active button';
+        this.showCompletedBtn.className = 'filter__completed button current_filter';
     }
 }
