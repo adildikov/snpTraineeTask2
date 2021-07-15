@@ -1,20 +1,23 @@
 import Task from "./Task.js"
 
 export default class TodoList {
-    constructor(lclStrg) {
+    constructor() {
         this.todoList = [];
-        this.lclStrg = lclStrg;
         this.crnFilter = "all";
         this.counter = 0;
     }
 
-    // updateLocal() {
-    //     const array = [];
-    //     this.todoList.forEach((el) => {
-    //         array.push(el.getMessage());
-    //     })
-    //     localStorage.setItem('todos', JSON.stringify(array));
-    // }
+    updateLocal() {
+        const array = [];
+        this.todoList.forEach((el) => {
+            array.push(el.getMessage());
+        })
+        localStorage.setItem('todos', JSON.stringify(array));
+    }
+
+    getLocal() {
+        return JSON.parse(localStorage.getItem("todos"));
+    }
 
     _updateCounter() {
         this.todoList.forEach((el) => {
@@ -28,6 +31,7 @@ export default class TodoList {
 
     _deleteTask(task) {
         this.todoList = this.todoList.filter(el => el !== task);
+        this.updateLocal();
     }
 
     _deleteCompleted = () => {
@@ -64,6 +68,7 @@ export default class TodoList {
         }
         this.whatFilter();
         this._updateCounter();
+        this.updateLocal();
     }
 
     whatFilter() {
@@ -106,6 +111,12 @@ export default class TodoList {
         this.deleteCompletedBtn = document.querySelector('.filter__deleteCompleted');
         this.counterHTML = document.querySelector('.counter');
         this.counterHTML.textContent = `Todos left: ${this.counter}`;
+        this.lclStrg = this.getLocal();
+        if (this.lclStrg !== [] && this.lclStrg !== null){
+            this.lclStrg.forEach((el) => {
+                this.addNewTask(el);
+            })
+        }
         this._setEventListeners();
         return(this)
     }

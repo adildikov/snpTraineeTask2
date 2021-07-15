@@ -1,7 +1,3 @@
-import TodoList from "./TodoList.js";
-import Task from "./task.js";
-import Input from "./Input.js";
-import * as Consts from "./constants.js"
 import Todo from "./Todo.js"
 
 //const toDoList = new TodoList(lclStrg);
@@ -17,9 +13,9 @@ import Todo from "./Todo.js"
 // const input = new Input((msg) => todoList.addNewTask(msg)).getInput();
 // todoList.addNewTask(message);
 
-let lclStrg = localStorage.getItem('todos') ? localStorage.getItem('todos') : [];
+//let lclStrg = localStorage.getItem('todos') ? localStorage.getItem('todos') : [];
 
-const todo = new Todo(lclStrg).getTodo();
+const todo = new Todo().getTodo();
 
 
 // Consts.newTodoMessage.addEventListener('keypress', (e) => {
