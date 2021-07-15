@@ -1,44 +1,46 @@
 
 
 export default class Filters {
-    constructor(showAll, showActive, showCompleted){
-        this.showAll = showAll;
-        this.showActive = showActive;
-        this.showCompleted = showCompleted;
-        this.showAllBtn = document.querySelector('.filter__all');
-        this.showActiveBtn = document.querySelector('.filter__active');
-        this.showCompletedBtn = document.querySelector('.filter__completed');
+    constructor(showAllTDL, showActiveTDL, showCompletedTDL){
+        this.showAll = showAllTDL;
+        this.showActive = showActiveTDL;
+        this.showCompleted = showCompletedTDL;
     }
 
-    whatFilter() {
-        if (this.crnFilter === 'all') this._showAll();
-        if (this.crnFilter === 'active') this._showActive();
-        if (this.crnFilter === 'complete') this._showCompleted();
-    }
-
-    _showAll() {
+    _showAll = () => {
         this.showAll();
-        this.crnFilter = "all";
         this.showAllBtn.className = 'filter__all button current_filter';
         this.showActiveBtn.className = 'filter__active button';
         this.showCompletedBtn.className = 'filter__completed button';
     }
 
-    _showActive() {
-        this._showAll();
+    _showActive = () => {
+        this.showAll();
         this.showActive();
-        this.crnFilter = "active";
         this.showAllBtn.className = 'filter__all button';
         this.showActiveBtn.className = 'filter__active button current_filter';
         this.showCompletedBtn.className = 'filter__completed button';
     }
     
-    _showCompleted() {
-        this._showAll();
+    _showCompleted = () => {
+        this.showAll();
         this.showCompleted();
-        this.crnFilter = "complete";
         this.showAllBtn.className = 'filter__all button';
         this.showActiveBtn.className = 'filter__active button';
         this.showCompletedBtn.className = 'filter__completed button current_filter';
+    }
+
+    _setEventListeners() {
+        this.showAllBtn.addEventListener('click', this._showAll);
+        this.showActiveBtn.addEventListener('click', this._showActive);
+        this.showCompletedBtn.addEventListener('click', this._showCompleted);
+    }
+
+    getFilters() {
+        this.showAllBtn = document.querySelector('.filter__all');
+        this.showActiveBtn = document.querySelector('.filter__active');
+        this.showCompletedBtn = document.querySelector('.filter__completed');
+        this._setEventListeners();
+        return(this)
     }
 }

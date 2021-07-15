@@ -10,7 +10,7 @@ export default class Todo {
     getTodo() {
         this.todoList = new TodoList(this.lclStrg).getTodoList();
         this.input = new Input((msg) => this.todoList.addNewTask(msg)).getInput();
-        this.filters = new Filters(this.todoList.showAll(), this.todoList.showActive(), this.todoList.showActive())
+        this.filters = new Filters(() => this.todoList.showAll(), () => this.todoList.showActive(), () => this.todoList.showCompleted()).getFilters();
         
     }
 }

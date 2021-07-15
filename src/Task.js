@@ -1,9 +1,11 @@
 
+
 export default class Task{
-    constructor(message, taskTemplateClass, deleteFromTDL) {
+    constructor(message, taskTemplateClass, deleteFromTDL, updateCounter) {
         this.message = message;
         this.taskTemplateClass = taskTemplateClass;
         this.deleteFromTDL = deleteFromTDL;
+        this.updateCounter = updateCounter;
     }
 
     getState() {
@@ -18,6 +20,10 @@ export default class Task{
         this.task.classList.remove('hidden');
     }
 
+    makeInvisible() {
+        this.task.classList.add('hidden');
+    }
+
     _showInput() {
         this.inputChange.classList.remove('hidden');
         this.text.classList.add('hidden')
@@ -29,20 +35,29 @@ export default class Task{
     }
 
     _toggleComplete = () => {
-        this.checkBox.checked = this.checkBox.checked ? true : false;
+        if (this.checkBox.checked){
+            this.checkBox.checked = true;
+        }
+        else {
+            this.checkBox.checked = false;
+        }
+        this.updateCounter();
     }
 
     makeComplete() {
         this.checkBox.checked = true;
+        this.updateCounter();
     }
 
     makeIncomplete() {
         this.checkBox.checked = false;
+        this.updateCounter();
     }
 
     _deleteTask = () => {
-        this.deleteFromTDL(this.task);
+        this.deleteFromTDL(this);
         this.task.remove();
+        this.updateCounter();
     }
 
     _textChange = () => {
