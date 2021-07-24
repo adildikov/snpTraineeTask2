@@ -141,6 +141,7 @@ input:checked + div {
 
 .todotxt_edit {
   width: 100%;
+  margin-left: 40px;
   background: transparent;
   border: none;
 }
